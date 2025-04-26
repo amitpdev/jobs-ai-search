@@ -1,0 +1,22 @@
+# NLU justfile
+
+[private]
+default:
+  @just --list --unsorted
+
+run:
+  rasa run --enable-api --cors '*' -vv
+
+train-nlu:
+  rasa train nlu
+
+train-core:
+  rasa train
+
+train-run: train-nlu run
+
+venv:
+  -uv venv .venv
+  -source .venv/bin/activate
+  # Install uv if not already installed
+  -pip install uv

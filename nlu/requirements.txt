@@ -1,0 +1,4 @@
+rasa==3.5.11
+google-cloud-storage==2.9.0
+# spacy==3.5.3
+python-Levenshtein==0.21.1

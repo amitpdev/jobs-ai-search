@@ -1,0 +1,31 @@
+# Worker justfile
+
+PACKAGE := 'src.main'
+
+[private]
+default:
+  @just --list --unsorted
+
+install: venv
+  uv pip install -e .
+
+install-dev: venv
+  uv pip install -e .[test]
+
+venv:
+  -uv venv .venv
+  -source .venv/bin/activate
+  # Install uv if not already installed
+  -pip install uv
+
+worker:
+  celery -A {{ PACKAGE }} worker --loglevel=info
+
+beat:
+  celery -A {{ PACKAGE }} beat --loglevel=info
+
+scrape:
+  python -m src.tasks.scrape
+
+parse:
+  python -m src.tasks.parse

@@ -1,0 +1,44 @@
+recipe: default.v1
+assistant_id: jobs-nlu
+language: en
+
+pipeline:
+  - name: WhitespaceTokenizer
+  # - name: SpacyNLP
+  #   model: en_core_web_md
+  # - name: SpacyTokenizer
+  # - name: SpacyFeaturizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 2
+    max_ngram: 5
+  - name: DIETClassifier
+    epochs: 100
+    constrain_similarities: true
+  # - name: "SpacyEntityExtractor"
+  #   # dimensions to extract
+  #   dimensions: ["PERSON", "LOC", "ORG", "PRODUCT"]
+  - name: EntitySynonymMapper
+  # - name: custom.speller.Speller
+  # - name: ResponseSelector
+  #   epochs: 100
+  #   constrain_similarities: true
+  # - name: FallbackClassifier
+  #   threshold: 0.3
+  #   ambiguity_threshold: 0.1
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+  - name: RulePolicy
+  - name: UnexpecTEDIntentPolicy
+    max_history: 5
+    epochs: 100
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+    constrain_similarities: true

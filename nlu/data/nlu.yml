@@ -1,0 +1,488 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - mmorning
+    - morning
+    - moining
+    - moning
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: find_job
+  examples: |
+    - I'm a [swift developer](job_title) ,I also know [Android](skills) and [Java](skills)
+    - I'm a [system engineer](job_title) ,I know [Unix](skills) and [Linux](skills)
+    - I'm a [Software engineer](job_title) ,I am good with [Python](skills) and [JS](skills) skills, and I have [backend](skills) expirience
+    - I'm a [linux expert](job_title) looking for [remote](workplace_type) job.. I am a real [git](skills) expert
+    - I'm looking for a [software engineering](job_title) position in [San Francisco](job_location).
+    - Can you help me find a job as a [backend developer](job_title) in [New York](job_location)?
+    - What opportunities are available for [frontend engineer](job_title) in [remote](workplace_type) positions?
+    - I want to find a job in [Berlin](job_location) as a [data scientist](job_title).
+    - What are the job prospects for [machine learning](skills) in [London](job_location)?
+    - I'm interested in [hybrid](workplace_type) positions as a [fullstack developer](job_title) in [Seattle](job_location).
+    - Can you recommend any [remote](workplace_type) job openings for [DevOps engineers](job_title)?
+    - I'm a [software engineer](job_title) with expertise in [Python](skills). Are there any job opportunities for me?
+    - What companies in [Austin](job_location) are hiring [frontend developers](job_title)?
+    - I'm looking for a [remote](workplace_type) job as a [software architect](job_title) with experience in [Java](skills).
+    - Are there any job openings for [software engineers](job_title) in [telaviv](job_location)?
+    - I'm interested in finding a [frontend developer](job_title) job in [Herzliya](job_location).
+    - Can you help me find a [remote](workplace_type) job in [Kfar-Saba](job_location)?
+    - What are the job prospects for [data scientists](job_title) in [Haifa](job_location)?
+    - I'm looking for a [DevOps engineer](job_title) position in [TelAviv](job_location).
+    - Are there any [Python](skills) developer jobs available in [Herzliya](job_location)?
+    - I want to find a job as a [full-stack developer](job_title) in [tel aviv](job_location).
+    - What companies in [Kfar Sava](job_location) are hiring [frontend developers](job_title) for [on site](workplace_type) kind of job?
+    - Any jobs in [Kefar Sabba]{"entity": "job_location", "value": "Kfar Sava"} working [onsite](workplace_type) at office
+    - Any jobs in [Kefar Sabba]{"entity": "job_location", "value": "Kfar Sava"}
+    - Can you recommend any [remote](workplace_type) job openings for [software engineers](job_title) in [Tel Aviv](job_location)?
+    - I'm looking for a [data analyst](job_title) position in [Haifa](job_location) with experience in [SQL](skills).
+    - [dev ops](job_title) [telaviv]{"entity": "job_location", "value": "Tel Aviv"}
+    - i am looking for [iOS developer](job_title) job and I also know [Python](skills) and [JavaScript](skills)
+    - i am looking for [Android developer](job_title) job and I also know [Java](skills) and [Kotlyn](skills) and [Pascal](skills)
+    - i am looking for [Android developer](job_title) job and I know [Java](skills) and [Kotlyn](skills) and [Basic](skills)
+    - i am looking for [Android developer](job_title) job and I am expert in [Math](skills) and [Physics](skills)
+    - I know how to program with [Rust](skills) programming language
+    - is there any available jobs for a [Rust developer](job_title)?
+    - I love [Rust](skills) programming language
+    - I also know [C](skills) and [Objc](skills) and good with [hardware](skills)
+    - am looking to be a [ML/AI developer](job_title), I know both [ChatGPT](skills) and [NLP](skills)
+    - I'm looking for [developer](job_title) job
+    - I'm looking for [programmer](job_title) job
+    - I'm looking for [coder](job_title) job
+    - I'm looking for [software engineer]{"entity": "job_title", "value": "Software Engineer"} job
+    - I'm a [software en]{"entity": "job_title", "value": "Software Engineer"}
+    - I'm looking for [sw eng]{"entity": "job_title", "value": "Software Engineer"} role
+    - I'm looking for [DevOps](job_title) job
+    - I'm looking for [devops](job_title) job
+    - I'm looking for [Python developer](job_title) job
+    - I'm looking for [Rust developer](job_title) job
+    - I'm looking for [Java developer](job_title) job
+    - I'm looking for [JavaScript developer](job_title) job
+    - I'm looking for [mobile developer](job_title) job
+    - I'm looking for [iOS developer](job_title) job
+    - I'm looking for [Swift developer](job_title) job
+    - I'm looking for [MacOS developer](job_title) job
+    - I'm looking for [Android developer](job_title) job
+    - I'm looking for [React Native developer](job_title) job
+    - I'm looking for [back end developer](job_title) job
+    - I'm looking for [React developer](job_title) role
+    - I'm looking for [frontend developer](job_title) role
+    - I'm looking for [fullstack developer](job_title) role
+    - I'm looking for [fullstacker](job_title) role
+    - I'm looking for [Web Developer](job_title) role
+    - I'm looking for [web expert](job_title) role
+    - I'm looking for [linux kernel programmer](job_title) role
+    - I'm looking for [linux driver developer](job_title) role
+    - I'm looking for [linux developer](job_title) position
+    - I'm looking for [AI expert](job_title) position
+    - I'm looking for [Data scientist](job_title) position
+    - I'm looking for [AI/ML engineer](job_title) position
+    - I'm looking for [embedded systems engineer](job_title) opportunity
+    - I'm looking for [Network administrator](job_title) opportunity
+    - I'm looking for [sys admin](job_title) opportunity
+    - I'm looking for [system admin](job_title) opportunity
+    - I'm looking for [system administrator](job_title) opportunity
+    - I'm looking for [data analyst](job_title) opportunity
+    - [Ramat Gan](job_location)
+    - [hertslia](job_location)
+    - [Kfar Sava](job_location)
+    - [Raanana](job_location)
+    - [Hod Hasharon](job_location)
+    - [Rosh Haayin](job_location)
+    - [Petah Tikva](job_location)
+    - [Natanya](job_location)
+    - [Hedera](job_location)
+    - [Haifa](job_location)
+    - [Afula](job_location)
+    - [Holon](job_location)
+    - [Ashdod](job_location)
+    - [Ashkelon](job_location)
+    - [Eilat](job_location)
+    - [Beer Sheva](job_location)
+    - [Rishon Lezion](job_location)
+    - [Jerusalem](job_location)
+    - [Israel](job_location)
+    - [Afula](job_location)
+    - [Ahihud](job_location)
+    - [Arad](job_location)
+    - [Ashdod](job_location)
+    - [Ashkelon](job_location)
+    - [Be'er Gannim](job_location)
+    - [Beer Sheva](job_location)
+    - [Beer Yaakov](job_location)
+    - [Beit Nehemya](job_location)
+    - [Bnei Brak](job_location)
+    - [Caesarea](job_location)
+    - [Center District](job_location)
+    - [Eilat](job_location)
+    - [Givat Shmuel](job_location)
+    - [Givatayim](job_location)
+    - [Haifa](job_location)
+    - [Hedera](job_location)
+    - [Herzliya](job_location)
+    - [Hod HaSharon](job_location)
+    - [Holon](job_location)
+    - [Israel](job_location)
+    - [Jerusalem](job_location)
+    - [Karmiel](job_location)
+    - [Kfar Giladi](job_location)
+    - [Kfar Sava](job_location)
+    - [Kiryat Ata](job_location)
+    - [Kiryat Gat](job_location)
+    - [Kiryat Ono](job_location)
+    - [Kiryat Shmona](job_location)
+    - [Kochav Yair](job_location)
+    - [Lod](job_location)
+    - [Magshimim](job_location)
+    - [Migdal HaEmek](job_location)
+    - [Migdal HaEmeq](job_location)
+    - [Modiin-Maccabim-Reut](job_location)
+    - [Nesher](job_location)
+    - [Ness Ziona](job_location)
+    - [Netanya](job_location)
+    - [Nof HaGalil](job_location)
+    - [North District](job_location)
+    - [Or Yehuda](job_location)
+    - [Petah Tikva](job_location)
+    - [Raanana](job_location)
+    - [Ramat Gan](job_location)
+    - [Ramla](job_location)
+    - [Rehovot](job_location)
+    - [Rishon LeZion](job_location)
+    - [Rosh HaAyin](job_location)
+    - [Sderot](job_location)
+    - [South District](job_location)
+    - [Tel Aviv](job_location)
+    - [West Jerusalem](job_location)
+    - [Yaqum](job_location)
+    - [Yokne'am](job_location)
+    - [Yokneam Ilit](job_location)
+    - [Yoqneam Illit](job_location)
+    - my skills are [Rust](skills) and [JS](skills) and [PHP](skills)
+    - I know programming with [Go](skills), [Dart](skills) and [Bash](skills)
+    - im good with [HTML](skills) and [CSS](skills)
+    - I am familiar with [Security](skills) and [Networking](skills)
+    - Im an expert [Swift](skills) developer
+    - I have experience with [iOS](skills) and [Android](skills) and [telephony](skills)
+    - I was working for three years while programming [Python](skills)
+    - Im a real guro in [DevOps](skills)
+    - I learned [Pascal](skills) in the past, but today I code with [ObjC](skills)
+    - I am really fluent in [Haskell](skills) and [Lua](skills)
+    - I basically know [Perl](skills) and [Scala](skills)
+    - I am proficient in [Java](skills) and [Python](skills) programming languages.
+    - My expertise lies in [Ruby](skills) and [Go](skills) development.
+    - I have hands-on experience with [React](skills) and [Vue.js](skills) frameworks.
+    - I specialize in [Data Science](skills) and [Machine Learning](skills) using tools like [R](skills) and [TensorFlow](skills).
+    - I have worked extensively with [SQL](skills) databases, including [MySQL](skills) and [PostgreSQL](skills).
+    - My skills include [UI/UX Design](skills) and [Wireframing](skills) using tools like [Figma](skills) and [Sketch](skills).
+    - I am familiar with [Cloud Computing](skills) platforms such as [AWS](skills) and [Azure](skills).
+    - I have knowledge of [Big Data](skills) technologies like [Hadoop](skills) and [Spark](skills).
+    - I excel in [Frontend Development](skills) using [Angular](skills) and [React](skills) frameworks.
+    - My skills extend to [Backend Development](skills) with expertise in [Node.js](skills) and [Django](skills).
+    - I am well-versed in [Mobile App Development](skills) using [Flutter](skills) and [React Native](skills).
+    - I have a deep understanding of [Data Analysis](skills) and [Visualization](skills) using tools like [Tableau](skills) and [Power BI](skills).
+    - I am experienced in [Test Automation](skills) using frameworks such as [Selenium](skills) and [Cypress](skills).
+
+
+- synonym: Tel Aviv
+  examples: |
+    - telaviv
+    - tel aviv
+    - Tel aviv
+    - tel Aviv
+    - tel-aviv
+    - tel-viv
+    - tlv
+    - telaviv yafo
+    - telaviv-yafoo
+
+- synonym: Herzliya
+  examples: |
+    - herzlyia
+    - herzelia
+    - hertslya
+    - hertselia
+    - hertslia
+    - hertslyia
+    - hertzlya
+
+- synonym: Kfar Sava
+  examples: |
+    - Kefar Saba
+    - Kefar Sava
+    - Kfar Sava
+    - kfar-saba
+    - kfar-sava
+    - kefar-saba
+    - kefar-sava
+
+- synonym: Software Engineer
+  examples: |
+    - software engineer
+    - software eng
+    - sw engineer
+    - sw eng
+
+- lookup: job_title
+  examples: |
+    - AI Engineer
+    - AI Expert
+    - AI/ML Engineer
+    - Android Developer
+    - Algorithm Expert
+    - Algorithm Developer
+    - Algorithm Engineer
+    - Automation Engineer
+    - Backend Developer
+    - Backend Engineer
+    - Big Data Engineer
+    - Blockchain Developer
+    - C Programmer
+    - C Developer
+    - C++ Programmer
+    - C++ Developer
+    - C++
+    - Cloud Architect
+    - Cybersecurity Analyst
+    - Data Analyst
+    - Data Engineer
+    - Data Scientist
+    - Database Administrator
+    - DevOps
+    - DevOps Developer
+    - DevOps Engineer
+    - DevOps Specialist
+    - Developer
+    - Embedded Systems Engineer
+    - Engineer
+    - Frontend Developer
+    - Full Stack Developer
+    - Fullstack Developer
+    - Fullstacker
+    - Game Developer
+    - iOS Developer
+    - IT Consultant
+    - IT Project Manager
+    - IT Support Specialist
+    - Java Developer
+    - JavaScript Developer
+    - Linux Developer
+    - Linux Driver Developer
+    - Linux Kernel Programmer
+    - Linux developer
+    - Linux driver developer
+    - Linux kernel programmer
+    - Machine Learning Engineer
+    - Mobile App Developer
+    - Mobile Developer
+    - Mobile developer
+    - Network Administrator
+    - Network Engineer
+    - Product Manager
+    - Programmer
+    - Programmer
+    - Python Developer
+    - Quality Assurance Engineer
+    - React Native Developer
+    - Rust Developer
+    - Scrum Master
+    - Software
+    - Software Architect
+    - Software Developer
+    - Software Engineer
+    - Software Engineer
+    - Software Programmer
+    - Software Tester
+    - Software Developer
+    - Sys Admin
+    - System Administrator
+    - Systems Analyst
+    - Technical Writer
+    - UI Designer
+    - UI/UX Designer
+    - UX Researcher
+    - Web Application Developer
+    - Web Developer
+    - Web Expert
+
+- lookup: job_location
+  examples: |
+    - Afula
+    - Ahihud
+    - Arad
+    - Ashdod
+    - Ashkelon
+    - Be'er Gannim
+    - Beer Sheva
+    - Beer Yaakov
+    - Beit Nehemya
+    - Bnei Brak
+    - Caesarea
+    - Center District
+    - Eilat
+    - Givat Shmuel
+    - Givatayim
+    - Haifa
+    - Hedera
+    - Herzliya
+    - Hod HaSharon
+    - Holon
+    - Israel
+    - Jerusalem
+    - Karmiel
+    - Kfar Giladi
+    - Kfar Sava
+    - Kiryat Ata
+    - Kiryat Gat
+    - Kiryat Ono
+    - Kiryat Shmona
+    - Kochav Yair
+    - Lod
+    - Magshimim
+    - Migdal HaEmek
+    - Migdal HaEmeq
+    - Modiin-Maccabim-Reut
+    - Nesher
+    - Ness Ziona
+    - Netanya
+    - Nof HaGalil
+    - North District
+    - Or Yehuda
+    - Petah Tikva
+    - Raanana
+    - Ramat Gan
+    - Ramla
+    - Rehovot
+    - Rishon LeZion
+    - Rosh HaAyin
+    - Sderot
+    - South District
+    - Tel Aviv
+    - West Jerusalem
+    - Yaqum
+    - Yokne'am
+    - Yokneam Ilit
+    - Yoqneam Illit
+
+- lookup: skills
+  examples: |
+    - Python
+    - Java
+    - Security
+    - Networking
+    - backend
+    - mobile development
+    - iOS
+    - Android
+    - Linux
+    - C++
+    - PHP
+    - HTML
+    - CSS
+    - Database Management
+    - Data Analysis
+    - Cloud Computing
+    - Machine Learning
+    - ML
+    - ML/AI
+    - Artificial Intelligence
+    - UI/UX Design
+    - DevOps
+    - Agile Methodology
+    - Scrum
+    - Git
+    - git
+    - hardware
+    - Hardware
+    - Docker
+    - Amazon Web Services (AWS)
+    - Microsoft Azure
+    - Google Cloud Platform (GCP)
+    - Big Data
+    - Ruby
+    - Go
+    - Swift
+    - TypeScript
+    - Kotlin
+    - C#
+    - Perl
+    - Objective-C
+    - Scala
+    - Haskell
+    - Lua
+    - Groovy
+    - R
+    - Shell Scripting
+    - MATLAB
+    - Assembly Language
+    - Elixir
+    - Clojure
+    - Julia
+    - Dart
+    - Erlang
+    - Fortran
+    - COBOL
+    - PowerShell
+    - VB.NET
+    - Prolog
+    - Scheme
+    - OCaml
+    - Ada
+    - Smalltalk
+    - LabVIEW
+    - ABAP
+    - Lisp
+    - F#
+    - Scratch
+    - Racket
+    - Bash
+    - Golang
+    - CoffeeScript
+    - Objective-J
+    - Groovy
+    - ActionScript
+    - RPG
+    - Transact-SQL
+    - Swift
+    - Rexx
+    - Logo
+    - Verilog
+    - Puppet
+    - Ada
+    - Tcl
+    - D
+    - AutoHotkey
+    - Crystal
+    - Frege
+
+- lookup: workplace_type
+  examples: |
+    - On-site
+    - Hybrid
+    - Remote

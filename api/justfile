@@ -1,0 +1,22 @@
+# API justfile
+
+PACKAGE := 'src.main'
+
+[private]
+default:
+  @just --list --unsorted
+
+run:
+  uvicorn {{ PACKAGE }}:app --reload
+
+install: venv
+  uv pip install -e .
+
+install-dev: venv
+  uv pip install -e .[test]
+
+venv:
+  -uv venv .venv
+  -source .venv/bin/activate
+  # Install uv if not already installed
+  -pip install uv

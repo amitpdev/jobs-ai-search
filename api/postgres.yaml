@@ -1,0 +1,96 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-env
+  namespace: postgres
+data:
+  POSTGRES_DB: jobs
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: postgres
+  labels:
+    app: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+      component: server
+  revisionHistoryLimit: 5
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  serviceName: ""
+  volumeClaimTemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: pg-data
+        labels:
+          app: postgres
+      spec:
+        storageClassName: do-block-storage
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
+  template:
+    metadata:
+      labels:
+        app: postgres
+        component: server
+    spec:
+      volumes:
+        - name: pg-data
+          persistentVolumeClaim:
+            claimName: pg-data
+      containers:
+        - name: pg
+          image: ankane/pgvector:v0.4.4
+          ports:
+            - containerPort: 5432
+          # resources:
+          #   limits: {}
+          #   requests: {}
+          envFrom:
+            - secretRef:
+                name: postgres-secrets
+            - configMapRef:
+                name: postgres-env
+
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - postgres
+                topologyKey: kubernetes.io/hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: postgres
+  labels:
+    app: postgres
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5432
+    targetPort: 5432
+    protocol: TCP
+  selector:
+    app: postgres
+    component: server

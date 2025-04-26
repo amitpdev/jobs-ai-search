@@ -1,0 +1,4 @@
+celery-types
+mypy
+pandas-stubs
+types-beautifulsoup4

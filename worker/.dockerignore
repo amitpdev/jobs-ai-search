@@ -1,0 +1,15 @@
+.coverage*
+.drone.yml
+.git*
+.idea
+.mypy_cache
+.pytest_cache
+.tmuxp.yml
+.vagrant
+.venv
+.vscode
+venv
+coverage.xml
+docker-compose.yml
+Dockerfile
+docs

@@ -1,0 +1,17 @@
+# Frontend justfile
+
+[private]
+default:
+  @just --list --unsorted
+
+dev:
+  vite dev
+
+build:
+  vite build
+
+preview:
+  vite preview
+
+run:
+  yarn run dev
